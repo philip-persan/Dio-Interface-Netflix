@@ -1,0 +1,711 @@
+/* ========================GERAL====================== */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --branco: #fafafa;
+    --cinza: #aaa;
+    --cinza-50: #aaaaaa50;
+    --cinza-25: #aaaaaa25;
+    --preto: #111;
+    --preto-75: #00000075;
+    --preto-bb: #222222bb;
+    --preto-93: #000000ee;
+    --vermelho: #d00;
+    --black-to-transp-bot: linear-gradient(to bottom,
+            #000000dd,
+            #00000050,
+            transparent);
+    --bg-previa: linear-gradient(to right,
+            #000000dd,
+            #00000050,
+            transparent,
+            #00000050),
+        linear-gradient(to top, #000000dd, #00000050, transparent);
+}
+
+/* ========================GERAL====================== */
+html {
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    width: 100vw;
+    height: 100%;
+    background-color: #000;
+}
+
+/* ========================HEADER====================== */
+header {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background: var(--black-to-transp-bot);
+    display: grid;
+    grid-template-columns: 200px auto 25%;
+    grid-template-rows: 70px;
+    z-index: 1000;
+}
+
+.logo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo>img {
+    width: 50%;
+}
+
+header>nav {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header>nav>a {
+    padding: 10px 20px 10px 0;
+    color: var(--branco);
+    font-weight: bold;
+}
+
+header>nav>a:hover {
+    color: var(--cinza);
+    transition: 0.5s;
+}
+
+.dropbox_nav {
+    display: none;
+    position: relative;
+}
+
+.dropdown_nav {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 175px;
+    border-top: 3px solid var(--cinza);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.dropdown_nav>a {
+    width: 100%;
+    height: 30px;
+    padding: 5px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--preto-93);
+    color: var(--branco);
+    border-collapse: collapse;
+}
+
+.dropdown_nav>a:hover {
+    background-color: var(--preto-bb);
+}
+
+header>.others {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    padding-right: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header>.others>div>img {
+    width: 20px;
+}
+
+.others>.search,
+.others>.notification,
+.others>.perfil {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+/* search */
+.others>.search {
+    height: 40px;
+    cursor: pointer;
+}
+
+.others>.search_open {
+    width: 265px;
+    border: 1px solid #fafafa;
+    background-color: var(--preto-93);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header>.others>.search>input {
+    width: 80%;
+    height: 70%;
+    border: none;
+    background-color: transparent;
+    color: var(--branco);
+    outline: none;
+}
+
+header>.others>.search>input:focus-within {
+    border: none;
+}
+
+/* notificaçoes */
+.notification {
+    position: relative;
+    color: var(--branco);
+}
+
+.notification>.notification_options {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 450px;
+    background-color: #111;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    border-top: 2px solid var(--cinza);
+    z-index: 1;
+}
+
+.notification_options>.notification_opt {
+    border-bottom: 1px solid var(--cinza-50);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+}
+
+.notification_opt>img {
+    width: 100px;
+    height: 64px;
+    border-radius: 6px;
+}
+
+.text_notification {
+    width: 270px;
+    height: 60px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.text_notification>.time {
+    font-size: 0.8rem;
+}
+
+/* perfil */
+.others>.perfil {
+    width: 75px;
+    height: 100%;
+}
+
+.drop_perfil {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.drop_btn {
+    width: 100%;
+    color: var(--branco);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop_btn>img {
+    width: 30px;
+    border-radius: 4px;
+}
+
+.drop_options {
+    position: absolute;
+    top: 70px;
+    right: -20px;
+    background-color: var(--preto-93);
+    min-width: 200px;
+    min-height: 400px;
+    z-index: 1;
+}
+
+.option {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.option>img {
+    width: 30px;
+    border-radius: 4px;
+}
+
+.name_perfil {
+    padding-left: 10px;
+}
+
+.option>a {
+    color: var(--branco);
+}
+
+.option>a:hover {
+    text-decoration: underline;
+}
+
+.drop_btn .drop_options {
+    display: block;
+}
+
+hr {
+    border-bottom: none;
+    border-color: var(--cinza);
+}
+
+/* ========================HEADER====================== */
+/* ========================PREVIA====================== */
+.previa {
+    width: 100%;
+    height: 90vh;
+    background: var(--bg-previa), url(/src/bg-stranger-things.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container_previa {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-previa);
+    display: flex;
+    flex-direction: column;
+}
+
+.informacoes_previa {
+    width: 100%;
+    height: 90%;
+    display: grid;
+    grid-template-rows: 30% 10% 45% 15%;
+    grid-template-columns: 55% 10% 35%;
+}
+
+.n_serie {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    color: var(--cinza);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 4%;
+}
+
+.n_serie>img {
+    width: 7%;
+}
+
+.n_serie>span {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.informacoes_previa>.descricao {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.descricao>.name_serie {
+    padding-left: 4%;
+}
+
+.name_serie>img {
+    width: 50%;
+}
+
+.descricao>.sinopse_serie {
+    padding-left: 4%;
+    color: var(--cinza);
+    font-size: 1.5rem;
+}
+
+.btns {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    padding-left: 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btns>.assistir {
+    width: 20%;
+    min-width: 95px;
+    height: 50%;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: var(--branco);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btns>.assistir:hover {
+    background-color: var(--cinza);
+}
+
+.btns>.assistir>span {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--preto);
+}
+
+.btns>.info_serie {
+    width: 32%;
+    min-width: 150px;
+    height: 50%;
+    padding: 10px;
+    margin-left: 15px;
+    background-color: var(--cinza-50);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.info_serie,
+.assistir {
+    min-height: 20px;
+}
+
+.info_serie>img,
+.assistir>img {
+    height: 95%;
+    min-height: 20px;
+}
+
+.btns>.info_serie:hover {
+    background-color: var(--cinza-25);
+}
+
+.btns>.info_serie>span {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--branco);
+}
+
+.som_censura {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.som_censura>.som {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    border: 1px solid var(--branco);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.som:hover {
+    background-color: var(--cinza-25);
+}
+
+.som>img {
+    width: 24px;
+}
+
+.som_censura>.censura {
+    width: 125px;
+    height: 50%;
+    border-left: 3px solid var(--cinza);
+    background-color: var(--preto-75);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.idade_censura {
+    font-family: "Oswald", sans-serif;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--branco);
+    width: 42px;
+    height: 42px;
+    margin-left: 15px;
+    background-color: var(--vermelho);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========================PREVIA====================== */
+/* ========================MAIN====================== */
+.minha_lista,
+.assistindo,
+.filmes,
+.series,
+.animes {
+    width: 100%;
+    height: 30vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.minha_lista>.owl-carousel,
+.assistindo>.owl-carousel,
+.filmes>.owl-carousel,
+.series>.owl-carousel,
+.animes>.owl-carousel {
+    width: 97%;
+    height: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.name_row {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left: 35px;
+    color: var(--branco);
+}
+
+.item {
+    width: 100%;
+    height: 18vh;
+    display: flex;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.item>img {
+    border-radius: 4px;
+}
+
+.owl-dots {
+    display: none;
+}
+
+/* ========================MAIN====================== */
+/* ========================QUERY====================== */
+/*LARGE SCREEN*/
+@media only screen and (max-width: 1200px) {
+    * {
+        font-size: 12px;
+    }
+
+    .previa {
+        height: 70vh;
+    }
+
+    .btns>.info_serie>span,
+    .btns>.assistir>span {
+        font-size: 1.2rem;
+    }
+
+    .minha_lista,
+    .assistindo,
+    .filmes,
+    .series,
+    .animes {
+        height: 25vh;
+        justify-content: space-evenly;
+    }
+
+    .item>img {
+        height: 70%;
+    }
+}
+
+/*LAPTOP*/
+@media only screen and (max-width: 992px) {
+    * {
+        font-size: 10px;
+    }
+
+    .informacoes_previa {
+        grid-template-rows: auto 10% 45% 15%;
+        grid-template-columns: 70% 30%;
+    }
+
+    .som_censura {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .som_censura>.censura {
+        width: 100px;
+        height: 50%;
+    }
+
+    .idade_censura {
+        width: 42px;
+        height: 100%;
+    }
+
+    .minha_lista,
+    .assistindo,
+    .filmes,
+    .series,
+    .animes {
+        height: 23vh;
+        justify-content: space-evenly;
+    }
+}
+
+/*TABLET*/
+@media only screen and (max-width: 768px) {
+
+    header>nav>a,
+    .dropdown_nav {
+        display: none;
+    }
+
+    .dropbox_nav {
+        display: block;
+        padding: 10px 20px 10px 0;
+        color: var(--branco);
+        font-weight: bold;
+    }
+
+    .previa {
+        height: 50vh;
+    }
+
+    .informacoes_previa {
+        grid-template-rows: auto 10% 45% 20%;
+        grid-template-columns: 70% 30%;
+    }
+
+    .minha_lista,
+    .assistindo,
+    .filmes,
+    .series,
+    .animes {
+        height: 20vh;
+        justify-content: space-evenly;
+    }
+}
+
+/*MOBILE*/
+@media only screen and (max-width: 600px) {
+    header {
+        grid-template-columns: 25% 40% 35%;
+        grid-template-rows: 45px;
+    }
+
+    .dropbox_nav {
+        display: flex;
+    }
+
+    header>.others {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .notification>.notification_options {
+        right: -45px;
+    }
+
+    .previa {
+        width: 100%;
+        height: 30vh;
+    }
+
+    .informacoes_previa {
+        grid-template-rows: auto 10% 45% 25%;
+        grid-template-columns: 70% 30%;
+    }
+
+    .n_serie>img {
+        width: 25px;
+    }
+
+    .descricao>.name_serie>img {
+        width: 100px;
+    }
+
+    .descricao>.sinopse_serie {
+        font-size: 1rem;
+    }
+
+    .idade_censura {
+        width: 32px;
+        height: 100%;
+    }
+
+    .name_row {
+        font-size: 1rem;
+        padding-left: 20px;
+    }
+}
+
+/* ========================QUERY====================== */
